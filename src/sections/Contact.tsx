@@ -6,7 +6,7 @@ import Image from 'next/image';
 export const Contact:React.FC = () => {
 
 	return (
-		<div id='contact' data-section='contact' className='flex flex-col gap-8 md:gap-16 mb-16'>
+		<div id='contact' data-section='contact' className='flex flex-col gap-8 md:gap-16 mb-16 p-4 md:p-8'>
 			<SmartMenu menuItems={mainMenu} currentTitle='contact' />
 
 			<p className="text-base text-muted-foreground">
@@ -14,9 +14,9 @@ export const Contact:React.FC = () => {
 			</p>
 
 			<div className="flex flex-wrap justify-evenly gap-4">
-				<a href='mailto:seufetelli@gmail.com' target='_blank' className='flex flex-wrap gap-2 items-center'>
+				<a href='mailto:seufetelli@gmail.com' target='_blank' className='flex flex-wrap gap-2 items-center justify-center md:justify-start'>
 					<Image src='/assets/images/email.png' alt='Email' width={72} height={72} />
-					<span className='text-muted-foreground text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#698cfd] to-[#7fe9ff]'>seufetelli@gmail.com</span>
+					<span className='text-muted-foreground text-xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#698cfd] to-[#7fe9ff]'>seufetelli@gmail.com</span>
 				</a>
 				<a href='https://www.linkedin.com/in/ciuffetelli' target='_blank' className='flex flex-wrap gap-2 items-center'>
 					<Image src='/assets/images/linkedin.webp' alt='LinkedIn' width={72} height={72} />

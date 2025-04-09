@@ -9,22 +9,10 @@ export const ProjectDetails:React.FC<ProjectDetailsProps> = ({ details = {}}) =>
 
 	const Item: React.FC<{ title: string, value: unknown }> = useCallback(({ title, value }) => {
 
-		const baseClassTitle = 'flex gap-2 font-bold text-gray-800 w-full md:w-32 capitalize';
+		const baseClassTitle = 'flex gap-2 font-bold text-gray-800 w-full md:w-32 capitalize items-center';
 		const baseClassValue = 'flex flex-1 justify-center items-center';
 
 		switch (title.toLowerCase()) {
-			case 'link':
-				return (
-					<>
-						<span className={baseClassTitle}>
-							<Image src='/assets/icons/external-link.svg' alt='External link' width={16} height={16} />
-							{title}:
-						</span>
-						<a href={String(value)} target='_blank' rel='noreferrer' className={`${baseClassValue} text-gray-300`}>
-							{String(value)}
-						</a>
-					</>
-				)
 			case 'technologies':
 				return (
 					<>
@@ -84,17 +72,33 @@ export const ProjectDetails:React.FC<ProjectDetailsProps> = ({ details = {}}) =>
 			case 'created at':
 				return null;
 			default:
-				return (
-					<>
-						<span className={baseClassTitle}>
-							{title}:
-						</span>
-						<div className={baseClassValue}>
-							{String(value)}
-						</div>
-					</>
-				);
+			break;
 		}
+
+		if(String(value).startsWith('http')) {
+			return (
+				<>
+					<span className={baseClassTitle}>
+						<Image src='/assets/icons/external-link.svg' alt='External link' width={16} height={16} />
+						{title}:
+					</span>
+					<a href={String(value)} target='_blank' rel='noreferrer' className={`${baseClassValue} hover:underline`}>
+						{String(value)}
+					</a>
+				</>
+			)
+		}
+
+		return (
+			<>
+				<span className={baseClassTitle}>
+					{title}:
+				</span>
+				<div className={baseClassValue}>
+					{String(value)}
+				</div>
+			</>
+		);
 	}, []);
 
 	return Object.entries(details)

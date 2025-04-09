@@ -56,7 +56,7 @@ export const Projects:React.FC = () => {
 	return (
 		<>
 			<Section id="projects" smartMenu={true} header={header}>
-				<div className='flex flex-wrap h-fit gap-4 text-center'>
+				<div className='flex flex-wrap text-center'>
 						{ filteredProjects.length === 0 && <p className='text-2xl'>🥺 No projects found</p> }
 						{filteredProjects.map(p => <ProjectItem key={p.title} project={p} onClick={handleSelectProject} />)}
 				</div>

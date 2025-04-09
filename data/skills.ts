@@ -105,6 +105,12 @@ export type Skill = {
 			title: 'Vite',
 			icon: '/assets/images/vite.png',
 			tags: ['bundler', 'frontend', 'build tool']
+		},
+		{
+			title: 'Node.js',
+			icon: '/assets/images/nodejs.svg',
+			showTitle: false,
+			tags: ['backend', 'javascript', 'runtime', 'server', 'node']
 		}
   ];
 

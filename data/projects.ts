@@ -72,5 +72,41 @@ export const projects: Project[] = [
 			Status: 'In Production (MVP)',
 		},
 		createdAt: new Date('2023-09-01')
+	},
+	{
+		title: '📦 Env Schema Validator - Node Package',
+		description: 'A lightweight Node.js utility for validating environment variables using a schema defined with Yup. Created to prevent misconfigurations in development and production environments by enforcing type-safe .env management. Especially useful for Node.js applications.',
+		skills: ['Javascript', 'Node.js', 'Github', 'Typescript'],
+		icon: '/assets/images/projects/env-schema-validator/cover.png',
+		url: 'https://www.npmjs.com/package/env-schema-validator',
+		details: {
+			'repository': 'https://github.com/ciuffetelli/env-schema-validator',
+			'npm package': 'https://www.npmjs.com/package/env-schema-validator',
+			'features': [
+				'🔐 Type-safe environment variable validation',
+				'🛠️ Easy-to-use schema definition with Yup',
+				'🔧 Configuration via .env file or environment variables',
+				'🚀 Seamless integration with Node.js applications',
+				'🧪 Comprehensive test suite'
+			]
+		},
+		createdAt: new Date('2024-08-01'),
+		priority: -1
+	},
+	{
+		title: '🧩 UK Test Booking Helper - Chrome Extension',
+		description: 'A browser extension built to help UK residents quickly find and book available driving test slots. It simplifies the DVSA search experience by highlighting available times and optionally enabling real-time auto-refresh functionality to catch cancellations faster.',
+		skills: ['Javascript', 'Github'],
+		icon: '/assets/images/projects/uk-test-booking-helper/cover.png',
+		details: {
+			'repository': 'https://github.com/ciuffetelli/driver-practical-test-dvsa',
+			'features': [
+				'🔎 Highlight available test slots',
+				'🔄 Auto-refresh for real-time updates',
+				'🛠️ Customizable settings for optimal experience',
+				'🚀 Seamless integration with DVSA website'
+			]
+		},
+		createdAt: new Date('2023-09-01')
 	}
 ]
