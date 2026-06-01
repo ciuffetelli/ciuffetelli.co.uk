@@ -1,105 +1,114 @@
 "use client";
 
-import { Project } from '../../../data/projects';
+import Image from 'next/image';
 import React, { useMemo } from 'react';
-import { Section } from '../section';
-import { mainMenu, MainMenuItem } from '../../../data/mainMenu';
-import { SmartMenu } from '../smartMenu';
-import { Gallery } from '../gallery';
-import { Skill, skills as skillData } from '../../../data/skills';
-import { ProjectDetails } from './projectDetails';
+import { Project } from '../../../data/projects';
+import { skills as skillData } from '../../../data/skills';
 import { sortSkills } from '../../utils/sortSkills';
+import { Gallery } from '../gallery';
 
-type ProjectSectionProps = {
-	project: Project;
-	active: boolean;
+type ProjectDetailProps = {
+  project: Project;
+  onClose: () => void;
 };
-export const ProjectSection:React.FC<ProjectSectionProps> = ({ project: { title, icon, images = [], description, details, createdAt, skills, url }, active }) => {
 
-	const menuItems = useMemo(() => {
-		// This project need be added just after Projects
-		return mainMenu.reduce((acc, item) => {
+export const ProjectDetail: React.FC<ProjectDetailProps> = ({ project, onClose }) => {
+  const { title, icon, images = [], description, skills, url, details = {} } = project;
 
-			acc.push(item);
+  const galleryImages = useMemo(() =>
+    [icon, ...images].map(src => ({ src, alt: `${title} screenshot` })),
+  [icon, images, title]);
 
-			if(item.name === 'Projects') {
-				acc.push({
-					name: title,
-					href: `#${title}`,
-				});
-			}
+  const technologies = useMemo(() =>
+    sortSkills(
+      skills
+        .map(s => skillData.find(d => d.title === s))
+        .filter((s): s is typeof skillData[number] => Boolean(s))
+    ),
+  [skills]);
 
-			return acc;
-		}, [] as MainMenuItem[]);
-	}, [title]);
+  const featuresList = details['Features'] as string[] | undefined;
+  const contribution = details['My Contribution'] as string[] | undefined;
+  const status = details['Status'] as string | undefined;
 
-	const projectImages = useMemo(() => {
-		return [icon, ...images].map(image => ({
-			src: image,
-			alt: `${title} ${image}`,
-		}));
-	}, [icon, images, title]);
+  return (
+    <div id="project-detail" className="tile bg-pearl border-t border-hairline">
+      <div className="tile-inner">
 
-	const projectDetails = useMemo(() => {
+        {/* Back */}
+        <button
+          type="button"
+          onClick={onClose}
+          className="flex items-center gap-2 type-caption text-ink-faint hover:text-ink transition-colors mb-10"
+        >
+          ← Back to projects
+        </button>
 
-		let projectDetails = details ?? {};
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
 
-		projectDetails['Created At'] = createdAt.toLocaleDateString('en-UK', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-		});
+          {/* Gallery */}
+          <Gallery images={galleryImages} length={9} />
 
-		const technologies: Skill[] = [];
+          {/* Content */}
+          <div className="flex flex-col gap-6">
+            <h2 className="type-display text-ink">{title}</h2>
+            <p className="type-body text-ink-muted">{description}</p>
 
-		skills.forEach(skill => {
+            {status && (
+              <div className="flex items-center gap-2">
+                <span className="type-caption text-ink-faint">Status</span>
+                <span className="type-caption text-ink font-medium">{status}</span>
+              </div>
+            )}
 
-			const itemSkill = skillData.find(s => s.title.toLowerCase() === skill.toLowerCase());
+            {url && (
+              <a href={url} target="_blank" rel="noreferrer" className="btn-ghost self-start">
+                Visit project ↗
+              </a>
+            )}
 
-			if(itemSkill) {
-				technologies.push(itemSkill);
-			}
-		});
+            {/* Technologies */}
+            <div className="flex flex-col gap-3">
+              <span className="type-caption text-ink-faint uppercase tracking-wider">Technologies</span>
+              <div className="flex flex-wrap gap-2">
+                {technologies.map(s => (
+                  <div key={s.title} className="flex items-center gap-1.5 bg-white border border-hairline rounded-lg px-2.5 py-1.5">
+                    <Image src={s.icon} alt={s.title} width={14} height={14} className="object-contain" />
+                    <span className="type-caption text-ink-muted">{s.title}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-		projectDetails['Technologies'] = sortSkills(technologies).map(skill => ({
-			title: skill.title,
-			icon: skill.icon,
-		}));
+            {/* Features */}
+            {featuresList && (
+              <div className="flex flex-col gap-3">
+                <span className="type-caption text-ink-faint uppercase tracking-wider">Features</span>
+                <ul className="flex flex-col gap-2">
+                  {featuresList.map(f => (
+                    <li key={f} className="type-body text-ink-muted">{f}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
-		if(url) {
-			projectDetails = {
-				Link: url,
-				...projectDetails
-			}
-		}
-
-		return projectDetails;
-	}, [createdAt, details, skills, url]);
-
-	const isMobile = useMemo(() => {
-		if(typeof window === 'undefined') return false;
-		return window.innerWidth < 768;
-	}, []);
-
-	if(!active) return null;
-	return (
-		<Section id={title}>
-			<div className="flex-wrap gap-4 items-center justify-between">
-				{ <SmartMenu menuItems={menuItems} currentTitle={title} /> }
-			</div>
-			<div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-
-				<Gallery images={projectImages} length={isMobile ? 4 : 9} />
-
-				<div className='flex flex-col gap-4'>
-					<p className='text-lg text-justify'>
-						{description}
-					</p>
-
-					<ProjectDetails details={projectDetails} />
-
-				</div>
-			</div>
-		</Section>
-	);
-}
+            {/* My Contribution */}
+            {contribution && (
+              <div className="flex flex-col gap-3">
+                <span className="type-caption text-ink-faint uppercase tracking-wider">My Contribution</span>
+                <ul className="flex flex-col gap-2">
+                  {contribution.map(c => (
+                    <li key={c} className="type-body text-ink-muted flex gap-2">
+                      <span className="text-primary shrink-0">✓</span>
+                      {c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

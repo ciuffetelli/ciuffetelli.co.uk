@@ -1,22 +1,17 @@
 import { About } from "@/sections/About";
+import { Contact } from "@/sections/Contact";
 import { Projects } from "@/sections/Projects";
 import { Skills } from "@/sections/Skills";
-import { Contact } from "@/sections/Contact";
+import { Solutions } from "@/sections/Solutions";
 
 export default function Home() {
   return (
-    <div className="min-h-screen font-[family-name:var(--font-geist-sans)]">
-      <main className="max-w-screen-lg mx-auto">
-        <About />
-        <Skills />
-				<Projects />
-				<Contact />
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-				<p>
-    			© {new Date().getFullYear()} Daniel C. All rights reserved.
-  			</p>
-      </footer>
+    <div className="pt-11">
+      <About />
+      <Solutions />
+      <Skills />
+      <Projects />
+      <Contact />
     </div>
   );
 }

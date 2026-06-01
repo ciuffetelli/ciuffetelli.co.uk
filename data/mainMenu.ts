@@ -9,6 +9,10 @@ export const mainMenu: MainMenuItem[] = [
     href: "#about",
   },
   {
+    name: "Solutions",
+    href: "#solutions",
+  },
+  {
     name: "Skills",
     href: "#skills",
   },

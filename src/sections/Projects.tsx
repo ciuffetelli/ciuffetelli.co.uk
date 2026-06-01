@@ -1,67 +1,69 @@
 "use client";
 
-import { Section } from '@/components/section';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { projects } from '../../data/projects';
-import { ProjectItem } from '@/components/project/projectItem';
-import { ProjectSection } from '@/components/project/projectSection';
-import { useRouter } from 'next/navigation';
+import { ProjectCard } from '@/components/project/projectItem';
+import { ProjectOverlay } from '@/components/ProjectOverlay';
+import { AnimateIn } from '@/components/AnimateIn';
 
-export const Projects:React.FC = () => {
+const sortProjects = (ps: typeof projects) =>
+  [...ps].sort(
+    ({ createdAt: a, priority: pA = 0 }, { createdAt: b, priority: pB = 0 }) => {
+      if (pA || pB) return pB - pA;
+      return b.getTime() - a.getTime();
+    }
+  );
 
-		const [search, setSearch] = useState('');
-		const [activatedProjectTitle, setActivatedProjectTitle] = useState('');
+export const Projects: React.FC = () => {
+  const [active, setActive] = useState('');
 
-		const router = useRouter();
+  const sorted = useMemo(() => sortProjects(projects), []);
 
-		const header = useMemo(() => {
-			return (
-				<input type='search' placeholder='Search project' value={search} onChange={(e) => setSearch(e.target.value)} className='w-full max-w-sm ring-1 ring-gray-900/25 rounded-lg p-2' />
-			)
-		}, [search]);
+  const handleSelect = useCallback((title: string) => {
+    setActive(prev => prev === title ? '' : title);
+  }, []);
 
-		const sortedProjects = useMemo(() => {
-			return [...projects].sort(({ createdAt: createdAtA = new Date(), priority: priorityA = 0 }, { createdAt: createdAtB = new Date(), priority: priorityB = 0 }) => {
-				const createdAtAgo = createdAtB.getTime() - createdAtA.getTime();
-				const priority = priorityB - priorityA;
+  const activeProject = sorted.find(p => p.title === active) ?? null;
 
-				if(priorityA || priorityB) return priority;
+  return (
+    <section id="projects">
 
-				return createdAtAgo;
-			});
-		}, []);
+      {/* Impact banner */}
+      <div className="bg-tile-3 text-on-dark py-24 px-6 text-center">
+        <p className="type-tagline text-muted-dark mb-5">Projects</p>
+        <h2 className="type-hero text-on-dark max-w-2xl mx-auto leading-tight">
+          What I&apos;ve built.
+        </h2>
+        <p className="type-lead text-muted-dark mt-6 max-w-xl mx-auto">
+          Products, tools, and platforms shipped in production.
+        </p>
+      </div>
 
-		const filteredProjects = useMemo(() => {
-				if (!search) return sortedProjects;
+      {/* Card grid */}
+      <div className="tile bg-parchment">
+        <div className="tile-inner">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {sorted.map((p, i) => (
+              <AnimateIn key={p.title} delay={i * 120}>
+                <ProjectCard
+                  project={p}
+                  active={active === p.title}
+                  onClick={() => handleSelect(p.title)}
+                />
+              </AnimateIn>
+            ))}
+          </div>
+        </div>
+      </div>
 
-				const lowerSearch = search.toLowerCase();
+      {/* Full-screen overlay */}
+      {activeProject && (
+        <ProjectOverlay
+          project={activeProject}
+          onClose={() => setActive('')}
+        />
+      )}
 
-				return sortedProjects.filter(({ title, skills = [] }) =>
-					[...skills, title].some(item =>
-						item.toLowerCase().includes(lowerSearch)
-					)
-				);
-		}, [search, sortedProjects]);
-
-		const handleSelectProject = useCallback((title: string) => {
-
-			setActivatedProjectTitle(title);
-
-			if(!title) return;
-
-			router.push(`#${title}`);
-
-		}, [router]);
-
-	return (
-		<>
-			<Section id="projects" smartMenu={true} header={header}>
-				<div className='flex flex-wrap text-center'>
-						{ filteredProjects.length === 0 && <p className='text-2xl'>🥺 No projects found</p> }
-						{filteredProjects.map(p => <ProjectItem key={p.title} project={p} onClick={handleSelectProject} />)}
-				</div>
-			</Section>
-			{ filteredProjects.map(p => <ProjectSection key={p.title} project={p} active={activatedProjectTitle === p.title} />) }
-		</>
-	);
-}
+    </section>
+  );
+};
