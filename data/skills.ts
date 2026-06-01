@@ -111,6 +111,16 @@ export type Skill = {
 			icon: '/assets/images/nodejs.svg',
 			showTitle: false,
 			tags: ['backend', 'javascript', 'runtime', 'server', 'node']
+		},
+		{
+			title: 'Azure DevOps',
+			icon: '/assets/images/devops.png',
+			tags: ['devops', 'ci/cd', 'pipelines', 'azure', 'microsoft']
+		},
+		{
+			title: 'React Native',
+			icon: '/assets/images/react_native.png',
+			tags: ['mobile', 'react', 'ios', 'android', 'cross-platform']
 		}
   ];
 
