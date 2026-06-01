@@ -1,8 +1,11 @@
-import Image from 'next/image';
-import React from 'react';
-import { skills } from '../../data/skills';
+"use client";
 
-const skillStyles: Record<string, { from: string; to: string; invert?: boolean; scale?: number }> = {
+import { SkillOverlay } from '@/components/SkillOverlay';
+import Image from 'next/image';
+import React, { useState } from 'react';
+import { Skill, skills } from '../../data/skills';
+
+export const skillStyles: Record<string, { from: string; to: string; invert?: boolean; scale?: number }> = {
   'Javascript':   { from: '#f0c419', to: '#c49800' },
   'Typescript':   { from: '#3178c6', to: '#1e5099' },
   'React':        { from: '#00c2e0', to: '#0093aa' },
@@ -27,31 +30,37 @@ const skillStyles: Record<string, { from: string; to: string; invert?: boolean; 
   'React Native': { from: '#4338ca', to: '#312e81', scale: 1.8 },
 };
 
-function AppIcon({ title, icon }: { title: string; icon: string }) {
-  const style = skillStyles[title] ?? { from: '#555555', to: '#333333' };
+function AppIcon({ skill, onSelect }: { skill: Skill; onSelect: (s: Skill) => void }) {
+  const style = skillStyles[skill.title] ?? { from: '#555555', to: '#333333' };
   return (
-    <div className="flex flex-col items-center gap-1.5">
+    <button
+      type="button"
+      onClick={() => onSelect(skill)}
+      className="flex flex-col items-center gap-1.5 cursor-pointer active:scale-90 transition-transform duration-150"
+    >
       <div
         className="size-14 rounded-[16px] overflow-hidden flex items-center justify-center p-1 shadow-sm"
         style={{ background: `linear-gradient(145deg, ${style.from}, ${style.to})` }}
       >
         <Image
-          src={icon}
-          alt={title}
+          src={skill.icon}
+          alt={skill.title}
           width={40}
           height={40}
-          className={`object-contain size-8 ${style.invert ? ' invert' : ''}`}
+          className={`object-contain size-8 ${style.invert ? 'invert' : ''}`}
           style={style.scale ? { transform: `scale(${style.scale})` } : undefined}
         />
       </div>
       <span className="text-white/90 text-[10px] font-medium text-center leading-tight drop-shadow w-14 truncate">
-        {title}
+        {skill.title}
       </span>
-    </div>
+    </button>
   );
 }
 
 export const Skills: React.FC = () => {
+  const [selected, setSelected] = useState<Skill | null>(null);
+
   return (
     <section id="skills">
 
@@ -62,7 +71,7 @@ export const Skills: React.FC = () => {
           The tools I build with.
         </h2>
         <p className="type-lead text-muted-dark mt-6 max-w-xl mx-auto">
-          22 technologies across frontend, mobile, backend, testing, and DevOps.
+          Tap any icon to explore each technology.
         </p>
       </div>
 
@@ -71,9 +80,10 @@ export const Skills: React.FC = () => {
         <div className="tile-inner flex justify-center">
 
           {/* iPhone frame */}
-          <div className="relative bg-[#1c1c1e] rounded-[52px] p-[10px] w-full max-w-[340px]"
-               style={{ boxShadow: '0 40px 100px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06)' }}>
-
+          <div
+            className="relative bg-[#1c1c1e] rounded-[52px] p-[10px] w-full max-w-[340px]"
+            style={{ boxShadow: '0 40px 100px rgba(0,0,0,0.22), 0 0 0 1px rgba(255,255,255,0.06)' }}
+          >
             {/* Side button */}
             <div className="absolute -right-[3px] top-32 w-[3px] h-14 bg-[#3a3a3c] rounded-r-full" />
             {/* Silent switch */}
@@ -84,7 +94,7 @@ export const Skills: React.FC = () => {
 
             {/* Screen */}
             <div
-              className="rounded-[44px] overflow-hidden"
+              className="rounded-[44px] overflow-hidden relative"
               style={{ background: 'linear-gradient(160deg, #1b1b4e 0%, #0d1b4b 50%, #0e2820 100%)' }}
             >
               {/* Dynamic Island */}
@@ -93,11 +103,9 @@ export const Skills: React.FC = () => {
               </div>
 
               {/* Icon grid */}
-              <div className="flex flex-wrap gap-x-3 gap-y-6 px-6 pt-2 pb-8 justify-center max-h-[480px] md:max-h-[580px] overflow-x-auto">
-                {skills.toSorted((a,b) => {
-									return a.title > b.title ? 1 : -1
-								}).map(s => (
-                  <AppIcon key={s.title} title={s.title} icon={s.icon} />
+              <div className="flex flex-wrap gap-x-3 gap-y-6 px-6 pt-2 pb-8 justify-center">
+                {skills.toSorted((a, b) => a.title > b.title ? 1 : -1).map(s => (
+                  <AppIcon key={s.title} skill={s} onSelect={setSelected} />
                 ))}
               </div>
 
@@ -105,6 +113,11 @@ export const Skills: React.FC = () => {
               <div className="flex justify-center pb-4 pt-1">
                 <div className="w-28 h-1 rounded-full bg-white/30" />
               </div>
+
+              {/* Skill detail overlay — slides up inside the phone screen */}
+              {selected && (
+                <SkillOverlay skill={selected} onClose={() => setSelected(null)} />
+              )}
             </div>
           </div>
 
