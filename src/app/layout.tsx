@@ -1,10 +1,15 @@
-import type { Metadata } from "next";
-import "./globals.css";
 import { Nav } from "@/components/nav";
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Daniel Ciuffetelli | Frontend Developer",
   description: "Frontend Developer — React, Next.js, TypeScript",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
@@ -14,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-canvas text-ink font-sans">
+      <body className="antialiased bg-canvas text-ink font-sans dark:bg-black dark:text-white">
         <Nav />
         {children}
       </body>

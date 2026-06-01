@@ -30,3 +30,31 @@ This is a single-page portfolio site built with Next.js 15 (App Router), React 1
 **Path alias** — `@/*` maps to `src/*` (configured in `tsconfig.json`). All imports from `data/` use relative paths like `../../data/projects` since `data/` is outside `src/`.
 
 **Styling** — Tailwind CSS v4 via PostCSS. The `.title` class is the only non-utility class used for section headings; it must be defined in the global CSS if referenced.
+
+## Owner — Daniel Ciuffetelli
+
+Frontend Developer with 5+ years of experience, based in London, UK. Specialises in React, Next.js, TypeScript, React Native, Jest, and Cypress. Focus areas: performance optimisation, accessibility, scalable architecture, and UI/UX best practices.
+
+### Experience (chronological, most recent first)
+
+| Company | Role | Period |
+|---|---|---|
+| Logistics UK | Frontend Developer | May 2025 – Present |
+| Brasileiros.co | Software Developer | Jun 2024 – May 2025 |
+| Voneus Broadband | Software Developer | Jun 2023 – Mar 2025 |
+| 360ss | Software Developer | Feb 2022 – Jun 2023 |
+| Freelance | Technology Consultant | Oct 2019 – Feb 2022 |
+
+**Key highlights per role:**
+- **Logistics UK** — Joined at critical relaunch stage; introduced centralised state management, simplified API data flow; acted as frontend reference point across multiple teams.
+- **Brasileiros.co** — Architected platform from scratch with Next.js and Prisma; improved team efficiency via Jira and CI/CD practices.
+- **Voneus Broadband** — Built frontend foundation from scratch; introduced Jest and Cypress testing; delivered stable MVP ahead of schedule.
+- **360ss** — Developed structured methodology for project setups, reducing onboarding time and improving team collaboration.
+- **Freelance** — Translated client requirements into scalable technical solutions across multiple projects.
+
+### Skills & Certifications
+
+**Top skills:** Front-End Development, DevOps, NestJS  
+**Languages:** Portuguese (native), English (professional), Italian (limited)  
+**Certifications:** OmniStack Week 11, Cyber Resilience Advanced (Silver), Laravel Restful API, PHP OOP, Vue JS  
+**Education:** BS Electrical & Electronics Engineering — Universidade Vila Velha (2014)
