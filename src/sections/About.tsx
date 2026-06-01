@@ -8,7 +8,8 @@ export const About: React.FC = () => {
     <section
       id="about"
       data-section="about"
-      className="tile bg-tile-1 text-on-dark overflow-x-hidden"
+      className="tile text-on-dark overflow-x-hidden"
+      style={{ background: 'linear-gradient(150deg, #0d1117 0%, #161b22 55%, #1c1f26 100%)' }}
     >
       {/*
         To add a full-bleed background photo in the future:

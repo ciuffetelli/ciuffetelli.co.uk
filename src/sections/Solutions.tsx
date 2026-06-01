@@ -1,5 +1,6 @@
 import React from 'react';
 import { solutions, Solution } from '../../data/solutions';
+import { AnimateIn } from '@/components/AnimateIn';
 
 const icons: Record<string, React.ReactNode> = {
   ai: (
@@ -34,7 +35,7 @@ const icons: Record<string, React.ReactNode> = {
 
 function SolutionCard({ id, title, description }: Solution) {
   return (
-    <div className="flex flex-col gap-5 bg-white rounded-2xl p-8 shadow-sm border border-hairline">
+    <div className="flex flex-col gap-5 bg-white rounded-2xl p-8 shadow-sm border border-hairline transition-all duration-300 hover:shadow-xl hover:-translate-y-1.5">
       <div className="text-primary">{icons[id]}</div>
       <h3 className="type-tagline text-ink">{title}</h3>
       <p className="type-body text-ink-muted">{description}</p>
@@ -61,8 +62,10 @@ export const Solutions: React.FC = () => {
       <div className="tile bg-parchment">
         <div className="tile-inner">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {solutions.map(s => (
-              <SolutionCard key={s.id} {...s} />
+            {solutions.map((s, i) => (
+              <AnimateIn key={s.id} delay={i * 100}>
+                <SolutionCard {...s} />
+              </AnimateIn>
             ))}
           </div>
         </div>

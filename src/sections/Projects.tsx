@@ -4,6 +4,7 @@ import React, { useState, useMemo, useCallback } from 'react';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '@/components/project/projectItem';
 import { ProjectDetail } from '@/components/project/projectSection';
+import { AnimateIn } from '@/components/AnimateIn';
 
 const sortProjects = (ps: typeof projects) =>
   [...ps].sort(
@@ -48,13 +49,14 @@ export const Projects: React.FC = () => {
       <div className="tile bg-parchment">
         <div className="tile-inner">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sorted.map(p => (
-              <ProjectCard
-                key={p.title}
-                project={p}
-                active={active === p.title}
-                onClick={() => handleSelect(p.title)}
-              />
+            {sorted.map((p, i) => (
+              <AnimateIn key={p.title} delay={i * 120}>
+                <ProjectCard
+                  project={p}
+                  active={active === p.title}
+                  onClick={() => handleSelect(p.title)}
+                />
+              </AnimateIn>
             ))}
           </div>
         </div>

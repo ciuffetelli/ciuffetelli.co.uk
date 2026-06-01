@@ -93,7 +93,7 @@ export const Skills: React.FC = () => {
               </div>
 
               {/* Icon grid */}
-              <div className="grid grid-cols-4 gap-x-3 gap-y-6 px-6 pt-2 pb-8">
+              <div className="flex flex-wrap gap-x-3 gap-y-6 px-6 pt-2 pb-8 justify-center max-h-[480px] md:max-h-[580px] overflow-x-auto">
                 {skills.toSorted((a,b) => {
 									return a.title > b.title ? 1 : -1
 								}).map(s => (

@@ -110,6 +110,11 @@ html {
   white-space: nowrap;
 }
 
+.btn-primary:hover {
+  opacity: 0.88;
+  transform: scale(1.03);
+}
+
 .btn-primary:active {
   transform: scale(0.95);
 }
@@ -131,6 +136,11 @@ html {
   white-space: nowrap;
 }
 
+.btn-ghost:hover {
+  background-color: rgba(0, 102, 204, 0.08);
+  transform: scale(1.03);
+}
+
 .btn-ghost:active {
   transform: scale(0.95);
 }
@@ -150,6 +160,11 @@ html {
   padding: 11px 22px;
   transition: opacity 0.15s ease;
   white-space: nowrap;
+}
+
+.btn-ghost-dark:hover {
+  background-color: rgba(41, 151, 255, 0.12);
+  transform: scale(1.03);
 }
 
 .btn-ghost-dark:active {
