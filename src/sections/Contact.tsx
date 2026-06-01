@@ -1,32 +1,59 @@
-import { SmartMenu } from '@/components/smartMenu';
 import React from 'react';
-import { mainMenu } from '../../data/mainMenu';
-import Image from 'next/image';
 
-export const Contact:React.FC = () => {
+export const Contact: React.FC = () => {
+  return (
+    <section id="contact" className="bg-tile-1 text-on-dark py-32 px-6 text-center">
 
-	return (
-		<div id='contact' data-section='contact' className='flex flex-col gap-8 md:gap-16 mb-16 p-4 md:p-8'>
-			<SmartMenu menuItems={mainMenu} currentTitle='contact' />
+      <div className="max-w-[680px] mx-auto flex flex-col items-center gap-8">
 
-			<p className="text-base text-muted-foreground">
-  			Feel free to reach out if you’d like to collaborate, have a question, or just want to say hello!
-			</p>
+        <p className="type-tagline text-muted-dark">Contact</p>
 
-			<div className="flex flex-wrap justify-evenly gap-4">
-				<a href='mailto:seufetelli@gmail.com' target='_blank' className='flex flex-wrap gap-2 items-center justify-center md:justify-start'>
-					<Image src='/assets/images/email.png' alt='Email' width={72} height={72} />
-					<span className='text-muted-foreground text-xl md:text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#698cfd] to-[#7fe9ff]'>seufetelli@gmail.com</span>
-				</a>
-				<a href='https://www.linkedin.com/in/ciuffetelli' target='_blank' className='flex flex-wrap gap-2 items-center'>
-					<Image src='/assets/images/linkedin.webp' alt='LinkedIn' width={72} height={72} />
-					<span className='text-muted-foreground text-3xl font-extrabold text-[#027fba] [text-shadow:_1px_1px_0_#042331]'>LinkedIn</span>
-				</a>
-				<a href='https://github.com/ciuffetelli' target='_blank' className='flex flex-wrap gap-2 items-center'>
-					<Image src='/assets/images/github.png' alt='Github' width={72} height={72} />
-					<span className='text-muted-foreground text-3xl font-extrabold text-black [text-shadow:_1px_1px_0_#313030]'>Github</span>
-				</a>
-			</div>
-		</div>
-	);
-}
+        <h2 className="type-hero text-on-dark leading-tight">
+          Let&apos;s work together.
+        </h2>
+
+        <p className="type-lead text-muted-dark max-w-md">
+          Open to new opportunities, collaborations, and interesting conversations. The fastest way to reach me is LinkedIn.
+        </p>
+
+        {/* Primary CTA */}
+        <a
+          href="https://www.linkedin.com/messaging/compose/?to=ciuffetelli"
+          target="_blank"
+          rel="noreferrer"
+          className="btn-primary mt-2"
+        >
+          Message me on LinkedIn
+        </a>
+
+        {/* Secondary links */}
+        <div className="flex items-center gap-6 mt-2">
+          <a
+            href="https://www.linkedin.com/in/ciuffetelli"
+            target="_blank"
+            rel="noreferrer"
+            className="type-caption text-muted-dark hover:text-on-dark transition-colors"
+          >
+            View profile ↗
+          </a>
+          <span className="text-muted-dark/30">|</span>
+          <a
+            href="https://github.com/ciuffetelli"
+            target="_blank"
+            rel="noreferrer"
+            className="type-caption text-muted-dark hover:text-on-dark transition-colors"
+          >
+            GitHub ↗
+          </a>
+        </div>
+
+      </div>
+
+      {/* Footer */}
+      <p className="type-caption text-muted-dark/40 mt-24">
+        © {new Date().getFullYear()} Daniel Ciuffetelli
+      </p>
+
+    </section>
+  );
+};
