@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useMemo } from 'react';
 import Image from 'next/image';
+import React, { useMemo } from 'react';
 import { Project } from '../../../data/projects';
-import { Gallery } from '../gallery';
 import { skills as skillData } from '../../../data/skills';
 import { sortSkills } from '../../utils/sortSkills';
+import { Gallery } from '../gallery';
 
 type ProjectDetailProps = {
   project: Project;

@@ -3,7 +3,7 @@
 import React, { useState, useMemo, useCallback } from 'react';
 import { projects } from '../../data/projects';
 import { ProjectCard } from '@/components/project/projectItem';
-import { ProjectDetail } from '@/components/project/projectSection';
+import { ProjectOverlay } from '@/components/ProjectOverlay';
 import { AnimateIn } from '@/components/AnimateIn';
 
 const sortProjects = (ps: typeof projects) =>
@@ -20,14 +20,8 @@ export const Projects: React.FC = () => {
   const sorted = useMemo(() => sortProjects(projects), []);
 
   const handleSelect = useCallback((title: string) => {
-    const next = active === title ? '' : title;
-    setActive(next);
-    if (next) {
-      setTimeout(() => {
-        document.getElementById('project-detail')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 50);
-    }
-  }, [active]);
+    setActive(prev => prev === title ? '' : title);
+  }, []);
 
   const activeProject = sorted.find(p => p.title === active) ?? null;
 
@@ -62,9 +56,9 @@ export const Projects: React.FC = () => {
         </div>
       </div>
 
-      {/* Detail panel */}
+      {/* Full-screen overlay */}
       {activeProject && (
-        <ProjectDetail
+        <ProjectOverlay
           project={activeProject}
           onClose={() => setActive('')}
         />

@@ -54,7 +54,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({ project, active, onCli
         {/* Footer */}
         <div className="flex items-center justify-between mt-2">
           <span className="type-caption text-primary font-medium">
-            {active ? '↑ Hide details' : '↓ Explore project'}
+            Explore project ↗
           </span>
           {url && (
             <a
