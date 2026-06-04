@@ -18,6 +18,27 @@ export type Project = {
 
 export const projects: Project[] = [
 	{
+		title: 'Plan2',
+		url: 'https://plan2.tech',
+		description: 'An AI-powered SaaS that turns project ideas into structured, ready-to-build plans. Developers describe what they want to build and Plan2 generates milestones, tasks, and subtasks — cutting weeks of planning down to seconds and providing the structure needed to take a project from scratch to MVP.',
+		skills: ['Next.js', 'React', 'Typescript', 'Tailwind CSS', 'Prisma ORM', 'Node.js', 'OpenAI', 'Stripe', 'Vercel', 'Github'],
+		icon: '/assets/images/projects/plan2/cover.png',
+		details: {
+			'Features': [
+				'🤖 AI-driven architecture analysis that breaks down requirements into milestones and tasks',
+				'🖱️ Drag-and-drop interface for organising and reprioritising your project board',
+				'💳 Stripe-powered subscription plans with team credit sharing',
+				'🔐 Google OAuth login for frictionless onboarding',
+				'👥 Team collaboration with permission controls (Professional Teams tier)',
+				'⚡ Context-aware AI that maintains consistency across the full project plan',
+			],
+			'Status': 'Live — trusted by 100+ builders',
+			'Link': 'https://plan2.tech'
+		},
+		createdAt: new Date('2025-01-01'),
+		priority: 98
+	},
+	{
 		title: 'Brasileiros.co',
 		url: 'https://brasileiros.co',
 		description: 'A community-driven platform designed to connect Brazilian people living abroad. The website aims to empower users to find and promote local Brazilian businesses, events, and groups, fostering a sense of belonging and mutual support.',

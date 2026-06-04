@@ -144,6 +144,18 @@ export const skills: Skill[] = [
     icon: '/assets/images/react_native.png',
     tags: ['mobile', 'react', 'ios', 'android', 'cross-platform'],
     description: "Cross-platform mobile framework using React and JavaScript to build native iOS and Android apps from a single shared codebase."
+  },
+  {
+    title: 'OpenAI',
+    icon: '/assets/images/openai.png',
+    tags: ['ai', 'llm', 'gpt', 'api', 'machine learning'],
+    description: "AI platform powering intelligent features via GPT models — used for generating structured plans, context-aware suggestions, and automated content."
+  },
+  {
+    title: 'Stripe',
+    icon: '/assets/images/stripe.png',
+    tags: ['payments', 'saas', 'billing', 'subscriptions'],
+    description: "Payment infrastructure for the internet. Used for handling subscriptions, billing, and secure payment flows in SaaS products."
   }
 ];
 
