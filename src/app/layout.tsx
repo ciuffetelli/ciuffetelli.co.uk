@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased bg-canvas text-ink font-sans dark:bg-black dark:text-white">
+      <body className="antialiased bg-canvas text-ink font-sans">
         <Nav />
         {children}
       </body>

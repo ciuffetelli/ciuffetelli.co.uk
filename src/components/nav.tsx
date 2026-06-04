@@ -8,7 +8,7 @@ export const Nav: React.FC = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 h-11 bg-black z-50">
+    <header className="fixed top-0 left-0 right-0 h-11 bg-black/60 backdrop-blur-md backdrop-saturate-150 border-b border-white/10 z-50">
       <div className="max-w-[980px] mx-auto h-full flex items-center justify-between px-6">
         <Link
           href="#about"

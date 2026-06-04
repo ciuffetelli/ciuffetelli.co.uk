@@ -3,7 +3,7 @@ export const hero = {
   role: "Frontend Developer",
   tagline: "React · Next.js · TypeScript",
   description:
-    "5+ years building scalable web and mobile applications. Currently at Logistics UK leading frontend architecture and acting as the frontend reference across cross-functional teams.",
+    "Experienced frontend engineer specializing in scalable web and mobile applications. At Logistics UK, I lead frontend architecture, drive technical decisions, and provide guidance across engineering, product, and design teams.",
   image: "/assets/images/hero_image.png",
   ctas: [
     { label: "View my work", href: "#projects", variant: "primary" as const },

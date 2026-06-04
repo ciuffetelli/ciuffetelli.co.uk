@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useState, useMemo, useCallback } from 'react';
-import { projects } from '../../data/projects';
+import { AnimateIn } from '@/components/AnimateIn';
 import { ProjectCard } from '@/components/project/projectItem';
 import { ProjectOverlay } from '@/components/ProjectOverlay';
-import { AnimateIn } from '@/components/AnimateIn';
+import React, { useCallback, useMemo, useState } from 'react';
+import { projects } from '../../data/projects';
 
 const sortProjects = (ps: typeof projects) =>
   [...ps].sort(
@@ -14,10 +14,15 @@ const sortProjects = (ps: typeof projects) =>
     }
   );
 
+const PAGE_SIZE = 4;
+
 export const Projects: React.FC = () => {
   const [active, setActive] = useState('');
+  const [showAll, setShowAll] = useState(false);
 
   const sorted = useMemo(() => sortProjects(projects), []);
+  const visible = showAll ? sorted : sorted.slice(0, PAGE_SIZE);
+  const hasMore = sorted.length > PAGE_SIZE;
 
   const handleSelect = useCallback((title: string) => {
     setActive(prev => prev === title ? '' : title);
@@ -43,7 +48,7 @@ export const Projects: React.FC = () => {
       <div className="tile bg-parchment">
         <div className="tile-inner">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {sorted.map((p, i) => (
+            {visible.map((p, i) => (
               <AnimateIn key={p.title} delay={i * 120}>
                 <ProjectCard
                   project={p}
@@ -53,6 +58,17 @@ export const Projects: React.FC = () => {
               </AnimateIn>
             ))}
           </div>
+
+          {hasMore && (
+            <div className="mt-10 text-center">
+              <button
+                onClick={() => setShowAll(prev => !prev)}
+                className="px-6 py-3 rounded-full border border-current type-label transition-opacity hover:opacity-70"
+              >
+                {showAll ? 'Show less' : `Show all ${sorted.length} projects`}
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
