@@ -1,6 +1,7 @@
 import { skillStyles } from "@/sections/Skills";
 import Image from 'next/image';
 import { useEffect, useState } from "react";
+import { projects } from "../../data/projects";
 import { Skill } from "../../data/skills";
 
 type SkillOverlayProps = {
@@ -10,6 +11,7 @@ type SkillOverlayProps = {
 
 export function SkillOverlay({ skill, onClose }: SkillOverlayProps) {
 	const style = skillStyles[skill.title] ?? { from: '#333333', to: '#111111' };
+	const usedIn = projects.filter(p => p.skills.includes(skill.title as never)).map(p => p.title);
 	const [phase, setPhase] = useState<'entering' | 'visible' | 'leaving'>('entering');
 
 	useEffect(() => {
@@ -72,6 +74,24 @@ export function SkillOverlay({ skill, onClose }: SkillOverlayProps) {
 				<p className="text-[13px] leading-relaxed text-white/75 text-center">
 					{skill.description ?? 'No description available.'}
 				</p>
+
+				{/* Used in */}
+				{usedIn.length > 0 && (
+					<div className="flex flex-col items-center gap-2 mt-1">
+						<span className="text-[11px] font-medium text-white/50 uppercase tracking-wider">Used in</span>
+						<div className="flex flex-wrap justify-center gap-1.5">
+							{usedIn.map(name => (
+								<span
+									key={name}
+									className="px-2.5 py-1 rounded-full text-[11px] font-medium text-white/80 leading-none"
+									style={{ background: 'rgba(255,255,255,0.15)' }}
+								>
+									{name}
+								</span>
+							))}
+						</div>
+					</div>
+				)}
 
 			</div>
 		</div>

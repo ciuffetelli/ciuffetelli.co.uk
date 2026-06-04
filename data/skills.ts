@@ -12,150 +12,150 @@ export const skills: Skill[] = [
     title: "Javascript",
     icon: "/assets/images/javascript.png",
     tags: ["es6", "frontend", "web", "vanilla"],
-    description: "The foundation of the web. Used for interactive UIs, server-side logic, and everything in between — from simple scripts to complex application state."
+    description: "My foundation language — used to build a Chrome extension for DVSA booking automation and to publish the env-schema-validator npm package. Still reach for it when TypeScript overhead isn't justified, especially for browser APIs and CLI scripts."
   },
   {
     title: "Typescript",
     icon: "/assets/images/typescript.png",
     tags: ["typed", "frontend", "backend", "superset"],
-    description: "Typed superset of JavaScript that catches bugs at compile time, improves code confidence, and scales teams without friction."
+    description: "The default for every project I start. Applied across Brasileiros.co, Metis, Plan2, and more — type-safe schemas, strict component contracts, and end-to-end inference from Prisma models straight through to the UI."
   },
   {
     title: "React",
     icon: "/assets/images/react.png",
     tags: ["spa", "hooks", "frontend", "jsx"],
-    description: "Component-based library for building declarative, high-performance user interfaces. The standard for modern frontend development."
+    description: "The component model behind every major product I've shipped. Comfortable with hooks, compound components, render optimisation, and large-scale team collaboration — used daily across 5+ years of professional work."
   },
   {
     title: "Next.js",
     icon: "/next.svg",
     showTitle: false,
     tags: ["react", "ssr", "frontend", "app router", "fullstack"],
-    description: "Full-stack React framework with SSR, SSG, and the App Router. Powers this portfolio and several production platforms I've shipped."
+    description: "Powers Brasileiros.co and Plan2 end-to-end — App Router, server components, API routes, and Vercel edge deployments. My go-to framework whenever a project needs both a polished frontend and a reliable backend."
   },
   {
     title: "CSS",
     icon: "/assets/images/css.png",
     showTitle: false,
     tags: ["styles", "scss", "sass", "layout", "frontend"],
-    description: "Deep mastery of layouts, animations, variables, and responsive design. The visual language of the web, wielded with precision."
+    description: "Deep fluency in Flexbox, Grid, custom properties, keyframe animations, and responsive design. Every project I've built relies on precise CSS — I avoid design-system shortcuts when the design needs real craft."
   },
   {
     title: "Tailwind CSS",
     icon: "/assets/images/tailwind.png",
     tags: ["utility-first", "design system", "css", "responsive"],
-    description: "Utility-first framework for rapid, consistent UI development. Enables design systems without leaving the markup."
+    description: "The styling backbone for Brasileiros.co, Metis, and Plan2. Speeds up layout work significantly while keeping styles co-located with markup — especially effective when iterating fast on product UI."
   },
   {
     title: "PHP",
     icon: "/assets/images/php.png",
     showTitle: false,
     tags: ["backend", "scripting", "web", "server-side"],
-    description: "Server-side scripting language behind a large portion of the web. Used across legacy systems and modern backends alike."
+    description: "Used throughout my freelance years and at 360ss for server-side APIs, CMS integrations, and custom backend logic. Comfortable with OOP patterns and REST API design. Certified via PHP OOP course."
   },
   {
     title: "Laravel",
     icon: "/assets/images/laravel.png",
     tags: ["php", "mvc", "framework", "eloquent", "artisan"],
-    description: "Elegant PHP framework with expressive syntax, Eloquent ORM, and a rich ecosystem that accelerates backend development."
+    description: "Built REST APIs and full CRUD applications for clients during the 360ss and freelance period. Certified via the Laravel Restful API course — Eloquent ORM and Artisan CLI were daily tools."
   },
   {
     title: "Prisma ORM",
     icon: "/assets/images/prisma_orm.png",
     tags: ["orm", "database", "postgres", "mysql", "typescript"],
-    description: "Type-safe database client for TypeScript and Node.js. Auto-generated migrations and a schema-first approach that eliminates runtime errors."
+    description: "The database layer for Brasileiros.co and Plan2 — schema-first migrations, relational queries, and seamless TypeScript inference from model to API response. Eliminates a whole class of runtime data bugs."
   },
   {
     title: "Jest",
     icon: "/assets/images/jest.avif",
     tags: ["testing", "unit", "test", "coverage"],
-    description: "JavaScript testing framework for unit and integration tests. Snapshot testing and coverage reports built in — a cornerstone of my TDD practice."
+    description: "Introduced Jest at Voneus from scratch as part of building the testing foundation for the Metis MVP. Also covers unit and integration tests on Brasileiros.co — snapshot testing, mocks, and coverage gates in CI."
   },
   {
     title: "Cypress",
     icon: "/assets/images/cypress.webp",
     tags: ["testing", "e2e", "browser", "automation"],
-    description: "End-to-end testing framework that runs real browser interactions. The closest thing to manual QA at scale, automated and repeatable."
+    description: "Set up Cypress end-to-end infrastructure at Voneus, covering critical user flows on Metis. Also runs on Brasileiros.co — real browser automation that catches regressions no unit test can surface."
   },
   {
     title: "Docker",
     icon: "/assets/images/docker.png",
     tags: ["containers", "devops", "backend", "environment"],
-    description: "Containerisation platform for packaging applications and dependencies into portable, reproducible environments across dev and production."
+    description: "Containerised local dev and CI environments for Brasileiros.co and Metis — consistent setups across machines, isolated services, and clean deployment pipelines without environment drift."
   },
   {
     title: "Github",
     icon: "/assets/images/github.png",
     tags: ["git", "version control", "collaboration", "repository"],
-    description: "Version control platform for collaboration, code review, and CI/CD automation. The hub of every professional project I've contributed to."
+    description: "The hub of every project I've shipped — branch strategy, PR reviews, Actions-based CI, and protected main branches. Hosted the env-schema-validator npm package and all personal open-source work."
   },
   {
     title: "Vercel",
     icon: "/assets/images/vercel.png",
     tags: ["deployment", "next.js", "serverless", "hosting"],
-    description: "Cloud platform optimised for Next.js with zero-config deployments, edge functions, and instant preview environments."
+    description: "Production host for Brasileiros.co and Plan2. Zero-config deploys on push, branch preview URLs for every PR, and edge function support — cuts deployment overhead to near zero for Next.js projects."
   },
   {
     title: 'Storybook',
     icon: '/assets/images/storybook.png',
     tags: ['design system', 'components', 'react', 'ui'],
-    description: "Component development environment for building, testing, and documenting UI in isolation — essential for scalable design systems."
+    description: "Used at Logistics UK to build and document a component library in isolation across multiple teams. Storybook as a shared contract between design and engineering reduced integration friction significantly."
   },
   {
     title: 'Redux',
     icon: '/assets/images/redux.png',
     tags: ['state management', 'react', 'frontend'],
-    description: "Predictable state container for JavaScript apps. The go-to for complex, shared state across large React applications."
+    description: "Introduced at Logistics UK to centralise state management across a multi-team frontend — eliminated prop-drilling, simplified API data flow, and gave every team a single predictable source of truth."
   },
   {
     title: 'React Query',
     icon: '/assets/images/react-query.png',
     tags: ['state management', 'react', 'frontend'],
-    description: "Async state management for server data — handles caching, background refetching, and synchronisation with minimal boilerplate."
+    description: "Server state layer for Metis — handles all API calls with automatic caching, background refetching, and optimistic updates. Replaced a mess of useEffect data-fetching logic and cut boilerplate substantially."
   },
   {
     title: 'Zustand',
     icon: '/assets/images/zustand.png',
     tags: ['state management', 'react', 'frontend'],
     iconSize: [320, 320],
-    description: "Lightweight, flexible state management for React. Minimal API, zero boilerplate, and just enough power for most applications."
+    description: "Client state management in Brasileiros.co — chosen over Redux for its minimal API when global state scope is moderate. One store, no boilerplate, and full TypeScript inference out of the box."
   },
   {
     title: 'Vite',
     icon: '/assets/images/vite.png',
     tags: ['bundler', 'frontend', 'build tool'],
-    description: "Lightning-fast build tool and dev server using native ES modules and HMR. The modern standard for frontend tooling."
+    description: "Build tooling for Metis at Voneus — near-instant HMR in development and optimised production bundles. Replaced a slow CRA setup and made the dev loop noticeably faster for the whole team."
   },
   {
     title: 'Node.js',
     icon: '/assets/images/nodejs.svg',
     showTitle: false,
     tags: ['backend', 'javascript', 'runtime', 'server', 'node'],
-    description: "JavaScript runtime built on Chrome's V8 engine for scalable, event-driven server-side applications and APIs."
+    description: "Runtime behind Plan2's API layer and the env-schema-validator npm package. Comfortable with async patterns, middleware pipelines, and CLI tooling — a natural extension of my TypeScript-first stack."
   },
   {
     title: 'Azure DevOps',
     icon: '/assets/images/devops.png',
     tags: ['devops', 'ci/cd', 'pipelines', 'azure', 'microsoft'],
-    description: "Microsoft's DevOps platform for managing pipelines, boards, repositories, and release workflows across enterprise teams."
+    description: "CI/CD pipeline management and sprint planning across professional roles. Configured multi-stage build, test, and deployment pipelines — integrated with Microsoft Active Directory and enterprise release workflows."
   },
   {
     title: 'React Native',
     icon: '/assets/images/react_native.png',
     tags: ['mobile', 'react', 'ios', 'android', 'cross-platform'],
-    description: "Cross-platform mobile framework using React and JavaScript to build native iOS and Android apps from a single shared codebase."
+    description: "Cross-platform mobile development — built iOS and Android apps sharing business logic with the React web layer. Part of my professional toolkit for delivering client-facing mobile products from a single codebase."
   },
   {
     title: 'OpenAI',
     icon: '/assets/images/openai.png',
     tags: ['ai', 'llm', 'gpt', 'api', 'machine learning'],
-    description: "AI platform powering intelligent features via GPT models — used for generating structured plans, context-aware suggestions, and automated content."
+    description: "The AI engine powering Plan2 — prompt engineering for structured plan generation, streaming completions, and context-aware task breakdowns. Integrated directly into the Next.js API layer with token-efficient prompting."
   },
   {
     title: 'Stripe',
     icon: '/assets/images/stripe.png',
     tags: ['payments', 'saas', 'billing', 'subscriptions'],
-    description: "Payment infrastructure for the internet. Used for handling subscriptions, billing, and secure payment flows in SaaS products."
+    description: "Payment infrastructure for Plan2 — subscription plans, webhook handling for lifecycle events, and a self-serve billing portal. First SaaS I took from zero to live payments, including trial flows and team seat management."
   }
 ];
 

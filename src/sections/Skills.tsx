@@ -28,6 +28,8 @@ export const skillStyles: Record<string, { from: string; to: string; invert?: bo
   'Vite':         { from: '#9a6cff', to: '#6e28d9' },
   'Node.js':      { from: '#5fa04e', to: '#3a7a2d' },
   'React Native': { from: '#4338ca', to: '#312e81', scale: 1.8 },
+  'OpenAI':       { from: '#10a37f', to: '#05704f' },
+  'Stripe':       { from: '#635bff', to: '#3d35cc' },
 };
 
 function AppIcon({ skill, onSelect }: { skill: Skill; onSelect: (s: Skill) => void }) {
